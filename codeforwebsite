@@ -1,0 +1,12 @@
+ 1003  django-admin startproject mysite
+ 1004  cd mysite
+ 1005  ll
+ 1006  python manage.py runserver
+ 1007  python3 manage.py startapp polls
+ 1008  python manage.py runserver
+ 1009  python3 manage.py startapp polls
+ 1010  python3 manage.py check
+ 1011  python3 manage.py makemigrations
+ 1012  python3 manage.py migrate
+ 1013  python3 manage.py startapp polls
+ 1014  python3 manage.py runserver
