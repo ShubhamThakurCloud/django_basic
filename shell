@@ -39,3 +39,47 @@ python3 manage.py shell
 <QuerySet [<post: post object (1)>]>
 >>> exit()
 
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 	I AM ADDING 2 MORE POST AT SAME USER '''''''''''''''''''''''''''''''''''''''''''''''''
+
+python3 manage.py shell
+Python 3.10.4 (main, Apr  2 2022, 09:04:19) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from blog.models import post
+>>> from django.contrib.auth.models import User
+>>> post.objects.all()
+<QuerySet [<post: Blog 1>]>
+>>> user = User.objects.filter(username='shubhamTK').first()
+>>> user
+<User: shubhamTK>
+>>> post_2 = post(title='Blog 2', content='Second Post Content!',author_id=user.id)
+>>> post_2.save()
+>>> post.objects.all
+<bound method BaseManager.all of <django.db.models.manager.Manager object at 0x7f31796ed5a0>>
+>>> post = post.objects.first()
+>>> post
+<post: Blog 1>
+>>> post.content
+'First Post Content!'
+>>> post.date_posted
+datetime.datetime(2022, 7, 18, 6, 8, 53, 196779, tzinfo=<UTC>)
+>>> post.author
+<User: shubhamTK>
+>>> post.author.email
+'rahul.bhadoriya159357@gmail.com'
+>>> user
+<User: shubhamTK>
+>>> post_2.save()
+>>> user.post_set
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x7f31796ed9f0>
+>>> user.post_set.all()
+<QuerySet [<post: Blog 1>, <post: Blog 2>]>
+>>> user.post_set.create(title='Blog 3' , content='Third Post content!')
+<post: Blog 3>
+>>> user.post_set
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x7f31796ed9f0>
+>>> user.post_set.all()
+<QuerySet [<post: Blog 1>, <post: Blog 2>, <post: Blog 3>]>
+>>> exit()
+
