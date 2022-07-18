@@ -1,0 +1,41 @@
+''' command to run shell ''
+python3 manage.py shell
+
+''' taking usr input '''
+>>> from blog.models import post
+
+''' selecting usr'''
+
+>>> from django.contrib.auth.models import User
+>>> User.objects.all()
+<QuerySet [<User: shubhamTK>, <User: Testuser>]>
+>>> User.objects.first()
+<User: shubhamTK>
+>>> User.objects.filter(username='shubhamTK')
+<QuerySet [<User: shubhamTK>]>
+>>> User.objects.filter(username='shubhamTK').first
+<bound method QuerySet.first of <QuerySet [<User: shubhamTK>]>>
+>>> User.objects.filter(username='shubhamTK').first()
+<User: shubhamTK>
+>>> user = User.objects.filter(username='shubhamTK').first()
+>>> user
+<User: shubhamTK>
+>>> user.id
+1
+>>> user.pk
+1
+>>> user = User.objects.get(id=1)
+>>> user
+<User: shubhamTK>
+>>> user
+<User: shubhamTK>
+>>> post.objects.all()
+<QuerySet []>
+>>> post_1 = post(title='Blog 1', content='First Post Content!', author = user)
+>>> post.objects.all()
+<QuerySet []>
+>>> post_1.save()
+>>> post.objects.all()
+<QuerySet [<post: post object (1)>]>
+>>> exit()
+

@@ -1,0 +1,21 @@
+ 1  printenv > /tmp/tmp-13049TJY2Dok41dIhtxt
+    2  ll
+    3  cd project
+    4  ll
+    5  cd django_project
+    6  python3 manage.py create superuser
+    7  python3 manage.py createsuperuser
+    8  code
+    9  history
+   10  tree
+   11  python manage.py makemigrations
+   12  python3 manage.py makemigrations
+   13  python3 manage.py migrate
+   14  python3 manage.py createsuperuser
+   15  python3 manage.py runserver
+   16  python3 manage.py makemigration
+   17  python3 manage.py makemigrations
+   18  python3 manage.py sqlmigrate blog 0001
+   19  python3 manage.py migrate
+   20  python3 manage.py shell
+
