@@ -1,0 +1,174 @@
+-------------------------------------------------------------------------------------------------------------Install python3 --------------------------------------------------------------------------------------
+
+Step 1: Update and Refresh Repository Lists
+
+sudo apt update
+
+Step 2: Install Supporting Software
+
+sudo apt install software-properties-common
+
+Step 3: Add Deadsnakes PPA
+
+sudo add-apt-repository ppa:deadsnakes/ppa
+
+sudo apt update
+
+Step 4: Install Python 3
+
+sudo apt install python3.8
+
+python --version
+
+-------------------------------------------------------------------------------------------------------------Install mysql ----------------------------------------------------------------------------------------
+
+Step 1 — Installing MySQL
+
+sudo apt update
+
+sudo apt install mysql-server
+
+sudo systemctl start mysql.service
+
+
+Step 2 — Configuring MySQL
+
+sudo mysql
+
+ mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+mysql> exit
+
+mysql -u root -p
+
+sudo mysql_secure_installation
+
+Step 3 — Creating a Dedicated MySQL User and Granting Privileges
+
+mysql -u root -p
+
+mysq> CREATE USER 'username'@'host' IDENTIFIED WITH authentication_plugin BY 'password';
+
+mysq> CREATE USER 'sammy'@'localhost' IDENTIFIED BY 'password';
+
+mysql> GRANT PRIVILEGE ON database.table TO 'username'@'host';
+
+mysql>GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
+
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
+
+mysql> FLUSH PRIVILEGES;
+
+mysql> exit
+
+Step 4 — Testing MySQL 
+
+systemctl status mysql.service
+
+sudo mysqladmin -p -u sammy version
+
+----------------------------------------------------------------------------------------------------1 STEP --------------------------------------------------------------------------------------------------------
+1 ) Create data base 
+ 
+CREATE DATABASE ikfreg CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+2) Database name 
+
+SHOW DATABASES;
+
+3) Select table name 
+
+use ikref
+
+4) To see tables
+
+SHOW TABLES;
+
+----------------------------------------------------------------------------------------------------2 Step --------------------------------------------------------------------------------------------------------
+
+INSTALL MYSQLCLIENT 
+
+sudo apt-get install build-essential checkinstall
+
+sudo apt-get install libreadline-gplv2-dev  libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+
+cd /usr/bin
+
+sudo wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz
+
+sudo tar xzf Python-3.6.2.tgz
+
+cd Python-3.6.2
+
+sudo ./configure --enable-optimizations
+
+sudo make altinstall
+
+python3.6 -m pip install mysqlclient
+
+
+----------------------------------------------------------------------------------------------------3 Step --------------------------------------------------------------------------------------------------------
+
+1 - cd ikfreg
+
+2 - cd ikfregistration
+
+3 - ikfregistration
+
+4 - open settings.py
+
+5 - Chnage user ,  password , as you put will creating mysql table . then change port number as shown below -
+  DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ikfreg',
+        'USER': 'username',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+
+5 - save 
+
+----------------------------------------------------------------------------------------------------4 Step --------------------------------------------------------------------------------------------------------
+
+1) cd ikfreg
+
+2) cd ikfregistration
+
+3) run commmand :-  pip install -r requirements.txt 
+
+
+---------------------------------------------------------------------------------------------------5 step ---------------------------------------------------------------------------------------------------------
+
+1 - cd ikfreg
+
+2 - cd ikfregistration
+
+3- open file url.py 
+
+4 - comment out this line :- path('teams/', include('teams.urls')),
+
+5 - save 
+
+--------------------------------------------------------------------------------------------------6 step ----------------------------------------------------------------------------------------------------------
+
+1 - cd ikfreg
+
+2 - cd ikfregistration
+
+3 - run command :- python3 manage.py migrate
+
+4 - done 
+
+-----------------------------------------------------------------------------------------------------7 step -------------------------------------------------------------------------------------------------------
+
+1) cd ikfreg
+
+2) cd ikfregistration
+
+3) run server :- python3 manage.py runserver 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
